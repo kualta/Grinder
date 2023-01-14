@@ -1,7 +1,8 @@
-import Layout from '@/components/layout';
-import Link from 'next/link'
+import Layout from "@/components/layout";
+import Head from "next/head";
+import Link from "next/link";
 
-const Home = () => {
+const About = () => {
     return (
         <Layout>
 
@@ -42,10 +43,10 @@ const Home = () => {
                     </div>
 
                 </div>
-            </div>
 
+            </div>
         </Layout>
-    )
+    );
 }
 
-export default Home;
+export default About;
