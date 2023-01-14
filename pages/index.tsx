@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 const Home = () => {
     return (
-        <Layout>
+        <Layout title='Sentence Grinder'>
 
             {/* Background */}
             <div className="absolute inset-x-0 bottom-0 w-screen">
@@ -16,7 +16,7 @@ const Home = () => {
             </div>
 
             {/* Hero */}
-            <div className="hero min-h-screen bg-base-200">
+            <div className="hero grow bg-base-200">
                 <div className="hero-content flex-col lg:flex-row space-x-10">
 
                     {/* Title */}
