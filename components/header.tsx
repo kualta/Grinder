@@ -11,6 +11,7 @@ const Header = ({ title }: HeaderProps) => {
         themeChange(false)
     }, [])
 
+
     return (
         <div className="navbar bg-base-100">
             {/* Start */}

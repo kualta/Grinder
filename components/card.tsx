@@ -5,23 +5,31 @@ export type Card = {
     back: string,
 }
 
-const CardView = (card: Card) => {
+type CardViewProps = {
+    card: Card,
+    onSuccess: () => void;
+    onFailure: () => void;
+}
+
+const CardView = ({ card, onSuccess, onFailure }: CardViewProps) => {
     let [flipped, setFlipped] = useState(false)
 
     const onFlip = () => {
         setFlipped(!flipped)
     }
 
-    const onSuccess = () => {
-        setFlipped(false)
+    const onSuccessClick = () => {
+        onSuccess();
+        onFlip();
     }
 
-    const onFailure = () => {
-        setFlipped(false)
+    const onFailureClick = () => {
+        onFailure();
+        onFlip();
     }
 
     return (
-        <div className="card bg-base-200 w-96 rounded-xl shadow-xl text-center">
+        <div className="flex flex-col bg-base-200 w-fit h-fit rounded-xl shadow-xl text-center">
             <div className="card-body items-center">
                 <h1 className="card-title text-4xl text-center">
                     {card.front}
@@ -30,10 +38,11 @@ const CardView = (card: Card) => {
                     ? <h2 className="card-content text-center"> {card.back} </h2>
                     : <button onClick={onFlip} className="btn w-28 btn-secondary btn-outline"> {`flip`} </button>
                 }
+                {flipped && <div className="divider"></div>}
                 {flipped && (
                     <div className="card-actions justify-between w-full">
-                        <button onClick={onFailure} className="btn w-24 btn-outline btn-error">Miss</button>
-                        <button onClick={onSuccess} className="btn w-24 btn-outline btn-success">Got it</button>
+                        <button onClick={onFailureClick} className="btn w-24 btn-outline btn-error">Miss</button>
+                        <button onClick={onSuccessClick} className="btn w-24 btn-outline btn-success">Got it</button>
                     </div>
                 )}
             </div>
