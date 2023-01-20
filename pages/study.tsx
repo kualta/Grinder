@@ -1,6 +1,6 @@
 import CardView, { Card } from "@/components/card";
 import Layout from "@/components/layout";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 interface StudyProps {
 
@@ -8,14 +8,19 @@ interface StudyProps {
 
 const Study = (props: StudyProps) => {
     let [currentCard, setCurrentCard] = useState({ front: "front", back: "back" } as Card)
+    let [nextCard, setNextCard] = useState({} as Card)
 
-    const onSuccess = () => {
-        setCurrentCard({ front: "success", back: "success back" } as Card)
-    }
+    const onSuccess = useCallback(async () => {
+        // TODO: Record success
+        setCurrentCard(nextCard)
+        setNextCard(await fetch_next_card())
+    }, [nextCard])
 
-    const onFailure = () => {
-        setCurrentCard({ front: "failure", back: "failure back" } as Card)
-    }
+    const onFailure = useCallback(async () => {
+        // TODO: Record failure
+        setCurrentCard(nextCard)
+        setNextCard(await fetch_next_card())
+    }, [nextCard])
 
 
     return (
@@ -25,6 +30,11 @@ const Study = (props: StudyProps) => {
             </div>
         </Layout>
     );
+}
+
+async function fetch_next_card(): Promise<Card> {
+    let response = (await fetch("api/get_card")).json()
+    return response
 }
 
 export default Study;
