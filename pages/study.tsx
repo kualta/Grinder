@@ -33,8 +33,11 @@ const Study = (props: StudyProps) => {
 }
 
 async function fetch_next_card(): Promise<Card> {
-    let response = (await fetch("api/get_card")).json()
-    return response
+    let response = await fetch("api/get_card")
+    let card = await response.json() as Card
+    console.log(card)
+
+    return card
 }
 
 export default Study;
