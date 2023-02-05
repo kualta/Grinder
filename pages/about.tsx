@@ -1,9 +1,9 @@
-import Layout from "@/components/layout";
+import Layout from "@/components/Layout";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
-const About = () => {
+const AboutPage = () => {
     return (
         <Layout>
 
@@ -65,4 +65,4 @@ const About = () => {
     );
 }
 
-export default About;
+export default AboutPage;

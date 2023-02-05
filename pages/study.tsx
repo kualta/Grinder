@@ -1,12 +1,12 @@
-import CardView, { Card } from "@/components/card";
-import Layout from "@/components/layout";
+import CardView, { Card } from "@/components/CardView";
+import Layout from "@/components/Layout";
 import { useCallback, useEffect, useState } from "react";
 
 interface StudyProps {
 
 }
 
-const Study = (props: StudyProps) => {
+const StudyPage = (props: StudyProps) => {
     let [currentCard, setCurrentCard] = useState({ front: "front", back: "back" } as Card)
     let [nextCard, setNextCard] = useState({} as Card)
 
@@ -40,4 +40,4 @@ async function fetch_next_card(): Promise<Card> {
     return card
 }
 
-export default Study;
+export default StudyPage;

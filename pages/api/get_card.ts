@@ -1,4 +1,4 @@
-import { Card } from '@/components/card'
+import { Card } from '@/components/CardView'
 import { PrismaClient } from '@prisma/client'
 import type { NextApiRequest, NextApiResponse } from 'next'
 

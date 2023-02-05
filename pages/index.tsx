@@ -1,7 +1,7 @@
-import Layout from '@/components/layout';
+import Layout from '@/components/Layout';
 import Link from 'next/link'
 
-const Home = () => {
+const HomePage = () => {
     return (
         <Layout title='Sentence Grinder'>
 
@@ -24,22 +24,9 @@ const Home = () => {
                         <h1 className="text-6xl font-bold">Sentence Grinder</h1>
                         <p className="text-2xl py-6">sentence mining <b>made easy</b></p>
                         <Link href={"/about"} className='btn btn-outline btn-secondary mr-8'>About</Link>
-                        <Link href={"/start"} className='btn btn-primary mr-8'>Get Started</Link>
+                        <Link href={"/study"} className='btn btn-primary mr-8'>Get Started</Link>
                     </div>
 
-                    {/* Beta Card */}
-                    <div className="text-center p-8 rounded-xl shadow-2xl card bg-base-100">
-                        <p className="text-2xl py-6">Beta Test</p>
-                        <label className="label">
-                            <span className="label-text">Got a code?</span>
-                        </label>
-                        <span className="flex flex-row space-x-2">
-                            <input type="text" placeholder="Your Code" name='beta-code' className="input input-bordered" />
-                            <button className="btn btn-square btn-secondary">{`>`}</button>
-                        </span>
-                        <div className="divider">Or</div>
-                        <button className="btn btn-primary">Join Whitelist</button>
-                    </div>
 
                 </div>
             </div>
@@ -48,4 +35,4 @@ const Home = () => {
     )
 }
 
-export default Home;
+export default HomePage;
