@@ -24,7 +24,7 @@ const StudyPage = (props: StudyProps) => {
 
 
     return (
-        <Layout>
+        <Layout title="Study">
             <div className="flex flex-col h-screen items-center justify-center">
                 <CardView card={currentCard} onSuccess={onSuccess} onFailure={onFailure} />
             </div>

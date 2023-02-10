@@ -36,7 +36,7 @@ const CardView = ({ card, onSuccess, onFailure }: CardViewProps) => {
                 </h1>
                 {flipped
                     ? <h2 className="card-content text-center"> {card.back} </h2>
-                    : <button onClick={onFlip} className="btn w-28 btn-secondary btn-outline"> {`flip`} </button>
+                    : <button onClick={onFlip} className="btn w-28 btn-primary btn-outline"> {`flip`} </button>
                 }
                 {flipped && <div className="divider"></div>}
                 {flipped && (

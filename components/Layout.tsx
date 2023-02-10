@@ -7,7 +7,7 @@ interface LayoutProps {
     title?: string
 }
 
-const Layout = ({ children, title = "Grinder" }: LayoutProps) => {
+const Layout = ({ children, title }: LayoutProps) => {
     return (
         <>
             <Head>
