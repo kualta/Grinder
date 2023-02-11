@@ -1,10 +1,10 @@
-import { Card } from '@/components/CardView'
-import { PrismaClient } from '@prisma/client'
-import type { NextApiRequest, NextApiResponse } from 'next'
+import { Card } from "@/components/CardView";
+import { PrismaClient } from "@prisma/client";
+import { NextApiRequest, NextApiResponse } from "next";
 
 const prisma = new PrismaClient()
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<Card>) {
+export default async function get_card(req: NextApiRequest, res: NextApiResponse<Card>) {
     const card = await fetch_card()
         .then(async (card) => {
             await prisma.$disconnect()
