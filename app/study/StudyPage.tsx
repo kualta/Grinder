@@ -1,7 +1,6 @@
 'use client'
 
 import CardView, { Card } from "@/components/CardView";
-import Layout from "@/components/Layout";
 import { useCallback, useState } from "react";
 import { fetch_next_card } from "./page";
 
