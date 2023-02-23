@@ -1,6 +1,6 @@
 import Header from '@/components/Header';
-import '@/styles/globals.css'
-import 'bootstrap-icons/font/bootstrap-icons.css'
+import '@/styles/globals.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 export default function RootLayout({
     children,
@@ -8,9 +8,9 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en">
+        <html lang="en" data-theme="dracula">
             <body className='h-screen flex flex-col'>
-                <Header title={''} />
+                <Header title={metadata.title} />
                 {children}
             </body>
         </html>
@@ -25,12 +25,6 @@ export const metadata = {
 
     icons: {
         icon: '/favicon.ico',
-        // shortcut: '/shortcut-icon.png',
-        // apple: '/apple-icon.png',
-        // other: {
-        //     rel: 'apple-touch-icon-precomposed',
-        //     url: '/apple-touch-icon-precomposed.png',
-        // },
     },
 
     robots: {

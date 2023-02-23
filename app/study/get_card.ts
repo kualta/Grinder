@@ -1,10 +1,10 @@
-import { Card } from "@/components/CardView";
+import { CardData } from "@/components/CardView";
 import { PrismaClient } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
 
 const prisma = new PrismaClient()
 
-export default async function get_card(req: NextApiRequest, res: NextApiResponse<Card>) {
+export default async function get_card(req: NextApiRequest, res: NextApiResponse<CardData>) {
     const card = await fetch_card()
         .then(async (card) => {
             await prisma.$disconnect()
@@ -24,13 +24,13 @@ export default async function get_card(req: NextApiRequest, res: NextApiResponse
     }
 }
 
-async function fetch_card(): Promise<Card | null> {
+async function fetch_card(): Promise<CardData | null> {
     const sentence = await prisma.sentences.findFirst()
     if (!sentence) return null
 
     console.log(sentence)
 
-    const card: Card = {
+    const card: CardData = {
         front: sentence.front || '',
         back: sentence.back || ''
     }
