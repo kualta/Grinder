@@ -1,8 +1,10 @@
+'use client';
+
 import { useState } from "react";
 
 export type CardData = {
-    front: string;
-    back: string;
+    front?: string;
+    back?: string;
 };
 
 type CardViewProps = {
@@ -14,22 +16,23 @@ type CardViewProps = {
 const CardView = ({ data, onSuccess, onFailure }: CardViewProps) => {
     let [flipped, setFlipped] = useState(false);
 
-    const onFlip = () => {
-        setFlipped(!flipped);
+    const Flip = () => {
+        setFlipped(!flipped)
     };
 
     const onSuccessClick = () => {
         onSuccess();
-        onFlip();
+        Flip();
     };
 
     const onFailureClick = () => {
         onFailure();
-        onFlip();
+        Flip();
     };
 
     let card = flipped ? (
         <>
+            <h1 className="card-title text-4xl text-center">{data.front}</h1>
             <h2 className="card-content text-center"> {data.back} </h2>
             <div className="divider"></div>
             <div className="card-actions justify-between w-full">
@@ -43,7 +46,8 @@ const CardView = ({ data, onSuccess, onFailure }: CardViewProps) => {
         </>
     ) : (
         <>
-            <button onClick={onFlip} className="btn w-28 btn-primary btn-outline">
+            <h1 className="card-title text-4xl text-center">{data.front}</h1>
+            <button onClick={Flip} className="btn w-28 btn-primary btn-outline">
                 {`flip`}
             </button>
         </>
@@ -52,8 +56,6 @@ const CardView = ({ data, onSuccess, onFailure }: CardViewProps) => {
     return (
         <div className="flex flex-col bg-base-200 w-fit h-fit rounded-xl shadow-xl text-center">
             <div className="card-body items-center">
-                <h1 className="card-title text-4xl text-center">{data.front}</h1>
-
                 {card}
             </div>
         </div>

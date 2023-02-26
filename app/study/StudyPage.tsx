@@ -1,29 +1,28 @@
 'use client'
 
-import CardView, { CardData } from "@/components/CardView";
-import { useCallback, useState } from "react";
-import { fetch_next_card } from "./page";
+import { use, useState } from "react";
+import CardView, { CardData } from "../../components/Card";
+import { get_next_card } from "./page";
 
-export interface StudyProps {
-
+type StudyPageProps = {
+    onSuccess: () => void,
+    onFailure: () => void,
 }
 
-export const StudyPage = (props: StudyProps) => {
-    let [currentCard, setCurrentCard] = useState({ front: "front", back: "back" } as CardData);
-    let [nextCard, setNextCard] = useState({} as CardData);
+export const StudyPage = () => {
+    // let [nextCard, setNextCard] = useState({} as CardData);
+    let [currentCard, setCurrentCard] = useState({} as CardData);
 
-    const onSuccess = useCallback(async () => {
-        // TODO: Record success
-        setCurrentCard(nextCard);
-        setNextCard(await fetch_next_card());
-    }, [nextCard]);
+    let card = use(get_next_card());
 
-    const onFailure = useCallback(async () => {
-        // TODO: Record failure
-        setCurrentCard(nextCard);
-        setNextCard(await fetch_next_card());
-    }, [nextCard]);
+    const onSuccess = async () => {
+        setCurrentCard(card);
+        // record success
+    };
 
+    const onFailure = async () => {
+        // record failure
+    };
 
     return (
         <div className="flex flex-col h-screen items-center justify-center">
