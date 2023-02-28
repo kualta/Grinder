@@ -1,14 +1,16 @@
 'use server'
 
-import { Sentence } from "@prisma/client";
+import { PrismaClient, Sentence } from "@prisma/client";
 import { CardData } from "../../components/Card";
-import prisma from "../db";
 import { StudyPage } from "./StudyPage";
 
-export default async function Page() {
-    
+const prisma = new PrismaClient()
 
-    return <StudyPage />;
+export default async function Page() {
+
+    let card = await get_next_card();
+
+    return <StudyPage data={card} />;
 }
 
 export async function get_next_card(): Promise<CardData> {
@@ -21,7 +23,7 @@ export async function get_next_card(): Promise<CardData> {
         .catch(async (e) => {
             await prisma.$disconnect();
             console.error(e);
-            return null;
+            process.exit(1);
         });
 
     let card: CardData = {
@@ -34,6 +36,7 @@ export async function get_next_card(): Promise<CardData> {
 
 async function fetch_sentence(): Promise<Sentence | null> {
     // TODO: Make user-specific, deck-specific
+
     let card = await prisma.sentence.findFirst();
 
     return card;

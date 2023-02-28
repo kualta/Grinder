@@ -1,22 +1,16 @@
 'use client'
 
-import { use, useState } from "react";
 import CardView, { CardData } from "../../components/Card";
-import { get_next_card } from "./page";
 
 type StudyPageProps = {
-    onSuccess: () => void,
-    onFailure: () => void,
+    data: CardData,
 }
 
-export const StudyPage = () => {
+export const StudyPage = ({ data }: StudyPageProps) => {
     // let [nextCard, setNextCard] = useState({} as CardData);
-    let [currentCard, setCurrentCard] = useState({} as CardData);
-
-    let card = use(get_next_card());
+    // let [currentCard, setCurrentCard] = useState({} as CardData);
 
     const onSuccess = async () => {
-        setCurrentCard(card);
         // record success
     };
 
@@ -26,7 +20,7 @@ export const StudyPage = () => {
 
     return (
         <div className="flex flex-col h-screen items-center justify-center">
-            <CardView data={currentCard} onSuccess={onSuccess} onFailure={onFailure} />
+            <CardView data={data} onSuccess={onSuccess} onFailure={onFailure} />
         </div>
     );
 };
