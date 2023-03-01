@@ -16,18 +16,18 @@ type CardViewProps = {
 const CardView = ({ data, onSuccess, onFailure }: CardViewProps) => {
     let [flipped, setFlipped] = useState(false);
 
-    const Flip = () => {
+    const flip = () => {
         setFlipped(!flipped)
     };
 
     const onSuccessClick = () => {
         onSuccess();
-        Flip();
+        flip();
     };
 
     const onFailureClick = () => {
         onFailure();
-        Flip();
+        flip();
     };
 
     let card = flipped ? (
@@ -47,7 +47,7 @@ const CardView = ({ data, onSuccess, onFailure }: CardViewProps) => {
     ) : (
         <>
             <h1 className="card-title text-4xl text-center">{data.front}</h1>
-            <button onClick={Flip} className="btn w-28 btn-primary btn-outline">
+            <button onClick={flip} className="btn w-28 btn-primary btn-outline">
                 {`flip`}
             </button>
         </>
